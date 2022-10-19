@@ -28,5 +28,5 @@
     
 ### 使用したアセット、素材
 
-     ##[aaa](https://assetstore.unity.com/packages/2d/characters/simple-2d-platformer-assets-pack-188518)
-     ##[bbb](https://assetstore.unity.com/packages/2d/environments/free-pixel-art-kit-211149)
+     (https://assetstore.unity.com/packages/2d/characters/simple-2d-platformer-assets-pack-188518)
+     (https://assetstore.unity.com/packages/2d/environments/free-pixel-art-kit-211149)
