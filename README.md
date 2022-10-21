@@ -8,10 +8,6 @@
 
 操作方法はWASDキーで移動、Spaceキーでジャンプ。
 
-使用した技術、またその理由
-
-このプロジェクトを通して直面した問題の事や、今後のこのプロジェクトの展望
-
 #### [ゲーム企画、仕様諸々決めたページはこちら](https://drive.google.com/file/d/134cX4F1Y8qNmAxJvyUCjtmxrYn-glOa8/view?usp=sharing)
 
 ## 制作メンバー名：意気込み
