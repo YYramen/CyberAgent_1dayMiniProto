@@ -29,8 +29,12 @@
     バージョン
     2021.3.11f1
     
-### 使用したアセット、素材
+### 使用したアセット、素材、ライブラリ
 
-[Simple 2D Platformer Assets Pack](https://assetstore.unity.com/packages/2d/characters/simple-2d-platformer-assets-pack-188518)
+[(キャラクター)Simple 2D Platformer Assets Pack](https://assetstore.unity.com/packages/2d/characters/simple-2d-platformer-assets-pack-188518)
 
-[FREE Pixel Art Kit](https://assetstore.unity.com/packages/2d/environments/free-pixel-art-kit-211149)
+[(ステージ)FREE Pixel Art Kit](https://assetstore.unity.com/packages/2d/environments/free-pixel-art-kit-211149)
+
+[(UI)Sleek essential UI pack](https://assetstore.unity.com/packages/2d/gui/icons/sleek-essential-ui-pack-170650#content)
+
+[(ライブラリ)DOTween (HOTween v2)](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
