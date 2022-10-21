@@ -41,4 +41,8 @@ Unity
 
 [(UI)Sleek essential UI pack](https://assetstore.unity.com/packages/2d/gui/icons/sleek-essential-ui-pack-170650#content)
 
+[(効果音)ChipTone By SFBGames](https://sfbgames.itch.io/chiptone)
+
+[(BGM)魔王魂](https://maou.audio/)
+
 [(ライブラリ)DOTween (HOTween v2)](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
