@@ -19,6 +19,7 @@ public class CameraMove2 : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(_isMove);
         if (transform.position.x <= _firstPosX)
         {
             _isFirst = true;
@@ -28,45 +29,21 @@ public class CameraMove2 : MonoBehaviour
             _isFirst = false;
             _isSecond = true;
         }
-        else if (transform.position.x >= _endPosX)
+        if (transform.position.x >= _endPosX)
         {
             _isMove = false;
+            _isFirst = false;
+            _isSecond = false;
         }
-
-        if (_isMove)
+        if (_isMove && _isFirst && !_isSecond)
         {
-            if (_isFirst && !_isSecond)
-            {
-                transform.position += new Vector3(_cameraSpeed * Time.deltaTime, 0);
-            }
-            else if (!_isFirst && _isSecond)
-            {
-                transform.position += new Vector3(_cameraSpeed * Time.deltaTime, _cameraSpeed * Time.deltaTime);
-            }
+            transform.position += new Vector3(_cameraSpeed * Time.deltaTime, 0);
         }
-        else
+        else if (_isMove && !_isFirst && _isSecond)
         {
-            return;
-        }
-
-    }
-
-
-    /// <summary>
-    /// 一定の速度で右に強制スクロール
-    /// </summary>
-    void Move()
-    {
-        if (_isMove && _isFirst)
-        {
-
-        }
-        if (_isMove && _isSecond && !_isFirst)
-        {
-            transform.position += new Vector3(_cameraSpeed + Time.deltaTime, _cameraSpeed * Time.deltaTime, 0);
+            transform.position += new Vector3(_cameraSpeed * Time.deltaTime, _cameraSpeed * Time.deltaTime);
         }
     }
-
     IEnumerator SwitchBool()
     {
         yield return new WaitForSeconds(_delayTime);
