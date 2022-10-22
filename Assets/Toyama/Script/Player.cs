@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float _speed = 0f;
-    [SerializeField] float _jumpPower = 15f;
+    [SerializeField,Tooltip("歩く速さ")] float _speed = 0f;
+    [SerializeField,Tooltip("ジャンプの高さ")] float _jumpPower = 15f;
+
     private float _h = 0f;
     private Rigidbody2D _rb2d;
     private Vector2 _dir = new Vector2(0, 0);
@@ -23,6 +24,9 @@ public class Player : MonoBehaviour
         Move();
     }
 
+    /// <summary>
+    /// プレイヤーの移動
+    /// </summary>
     private void Move()
     {
         _h = Input.GetAxisRaw("Horizontal");
@@ -54,12 +58,21 @@ public class Player : MonoBehaviour
             _jumpCount++;
         }
     }
+
+    /// <summary>
+    /// 設置判定
+    /// </summary>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Platform")
         {
             _jumpCount = 0;
             _anim.SetBool("Jump", false);
+        }
+
+        if(collision.gameObject.tag == "Dead")
+        {
+            GameManager.Instance.GameOver();
         }
     }
 }
