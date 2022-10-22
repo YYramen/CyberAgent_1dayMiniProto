@@ -8,11 +8,14 @@ public class UpStage : MonoBehaviour
     [SerializeField, Tooltip("è„è∏Ç∑ÇÈçÇÇ≥")] float _upNum;
     [SerializeField, Tooltip("è¡Ç¶ÇÈÇ‹Ç≈ÇÃéûä‘")] float _time;
     [SerializeField, Tooltip("ìÆÇ´énÇ‹ÇÈÇ‹Ç≈ÇÃíxâÑ")] float _delayTime;
+    [SerializeField,Tooltip("SE")] AudioClip _clip;
     [SerializeField] string _playerName;
 
+    AudioSource _audioSource;
     SpriteRenderer _sp;
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _sp = GetComponent<SpriteRenderer>();
     }
 
@@ -44,6 +47,7 @@ public class UpStage : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(_playerName))
         {
+            _audioSource.PlayOneShot(_clip);
             StageDOTween();
         }
     }
