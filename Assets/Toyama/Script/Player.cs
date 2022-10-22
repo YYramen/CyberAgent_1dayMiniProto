@@ -7,17 +7,24 @@ public class Player : MonoBehaviour
     [SerializeField, Tooltip("歩く速さ")] float _speed = 0f;
     [SerializeField, Tooltip("ジャンプの高さ")] float _jumpPower = 15f;
     [SerializeField, Tooltip("空中の速さ")] float _airSpeed = 2f;
+    [SerializeField,Tooltip("ジャンプ音")] AudioClip _se;
 
     private float _h = 0f;
     private Rigidbody2D _rb2d;
     private Vector2 _dir = new Vector2(0, 0);
     private Animator _anim;
     private bool _isAir = false;
+    private AudioSource _as;
 
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
+        _as = GetComponent<AudioSource>();
+        if(_se == null)
+        {
+            Debug.LogError("ジャンプ音確認");
+        }
     }
 
     void Update()
@@ -63,6 +70,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && !_isAir)
         {
+            _as.PlayOneShot(_se);
             _isAir = true;
             _rb2d.velocity = Vector2.zero;
             _rb2d.AddForce(transform.up * _jumpPower, ForceMode2D.Impulse);
@@ -73,7 +81,7 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
-    /// 当たり判定
+    /// 死ぬ判定
     /// </summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -81,6 +89,13 @@ public class Player : MonoBehaviour
         {
             GameManager.Instance.GameOver();
         }
+        if(collision.gameObject.tag == "Finish")
+        {
+            GameManager.Instance.GameClear();
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
         if (collision.gameObject.tag == "Platform")
         {
             _isAir = false;
