@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class DownStage : MonoBehaviour
 {
-    [SerializeField, Tooltip("ã¸‚·‚é‚‚³")] float _downNum;
+    [SerializeField, Tooltip("‰º~‚·‚é‚‚³")] float _downNum;
     [SerializeField, Tooltip("Á‚¦‚é‚Ü‚Å‚ÌŠÔ")] float _time;
     [SerializeField, Tooltip("“®‚«n‚Ü‚é‚Ü‚Å‚Ì’x‰„")] float _delayTime;
     [SerializeField] string _playerName;
