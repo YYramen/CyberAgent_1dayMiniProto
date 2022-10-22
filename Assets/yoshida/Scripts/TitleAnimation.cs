@@ -5,24 +5,26 @@ using TMPro;
 
 public class TitleAnimation : MonoBehaviour
 {
-    [SerializeField] private Gradient _gradientColor;
+    [SerializeField, Tooltip("文字の色のグラデーション")] private Gradient _gradientColor;
     private TMP_Text _textComponent;
+
+    private void Start()
+    {
+        _textComponent = GetComponent<TMP_Text>();
+    }
 
     private void Update()
     {
-        if (this._textComponent == null)
-            this._textComponent = GetComponent<TMP_Text>();
-
         UpdateAnimation();
     }
 
     private void UpdateAnimation()
     {
-        // ① メッシュを再生成する（リセット）
+        // メッシュを再生成する（リセット）
         this._textComponent.ForceMeshUpdate(true);
         var textInfo = _textComponent.textInfo;
 
-        // ②頂点データを編集した配列の作成
+        // 頂点データを編集した配列の作成
         var count = Mathf.Min(textInfo.characterCount, textInfo.characterInfo.Length);
         for (int i = 0; i < count; i++)
         {
@@ -45,7 +47,7 @@ public class TitleAnimation : MonoBehaviour
             colors[vertexIndex + 3] = _gradientColor.Evaluate(time2); // 右下
         }
 
-        // ③ メッシュを更新
+        //  メッシュを更新
         for (int i = 0; i < textInfo.materialCount; i++)
         {
             if (textInfo.meshInfo[i].mesh == null) { continue; }
