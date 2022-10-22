@@ -52,9 +52,17 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ゲームリザルト
+    /// ゲームオーバー
     /// </summary>
-    public void GameOver(bool isClear)
+    public void GameOver()
+    {
+
+    }
+
+    /// <summary>
+    /// ゲームクリア
+    /// </summary>
+    public void GameClear()
     {
 
     }
