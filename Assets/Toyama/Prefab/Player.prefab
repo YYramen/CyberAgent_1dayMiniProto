@@ -155,11 +155,11 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0085783005, y: 0.06862688}
-  m_Size: {x: 0.6625848, y: 0.86274624}
+  m_Offset: {x: -0.052293986, y: -0.43960202}
+  m_Size: {x: 0.25261444, y: 0.30638742}
   m_Direction: 0
 --- !u!61 &7705472950789122516
 BoxCollider2D:
@@ -203,7 +203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &837485695859753434
 Transform:
   m_ObjectHideFlags: 0
