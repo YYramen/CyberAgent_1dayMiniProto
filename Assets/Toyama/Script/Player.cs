@@ -79,6 +79,14 @@ public class Player : MonoBehaviour
         }
 
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Platform")
+        {
+            _isAir = false;
+            _anim.SetBool("Jump", false);
+        }
+    }
 
     /// <summary>
     /// Ž€‚Ê”»’è
@@ -92,14 +100,6 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "Finish")
         {
             GameManager.Instance.GameClear();
-        }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Platform")
-        {
-            _isAir = false;
-            _anim.SetBool("Jump", false);
         }
     }
 }
