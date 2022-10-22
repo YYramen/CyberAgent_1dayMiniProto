@@ -37,10 +37,10 @@ public class UpStage : MonoBehaviour
         Destroy(gameObject);
     }
     /// <summary>
-    /// プレイヤーが乗ったら上昇開始
+    /// プレイヤーが乗ったら下降開始
     /// </summary>
     /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(_playerName))
         {
