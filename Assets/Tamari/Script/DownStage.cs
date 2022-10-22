@@ -41,12 +41,11 @@ public class DownStage : MonoBehaviour
     /// プレイヤーが乗ったら下降開始
     /// </summary>
     /// <param name="collision"></param>
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag(_playerName))
+        if (collision.gameObject.CompareTag(_playerName))
         {
             StageDOTween();
         }
     }
-
 }
