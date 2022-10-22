@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Platform")
         {
             _jumpCount = 0;
             _anim.SetBool("Jump", false);
