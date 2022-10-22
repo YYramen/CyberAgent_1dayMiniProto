@@ -21,6 +21,9 @@ public class DownStage : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// 下降する床
+    /// </summary>
     void StageDOTween()
     {
         var sequence = DOTween.Sequence();
@@ -34,6 +37,10 @@ public class DownStage : MonoBehaviour
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// プレイヤーが乗ったら下降開始
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag(_playerName))
