@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField,Tooltip("歩く速さ")] float _speed = 0f;
-    [SerializeField,Tooltip("ジャンプの高さ")] float _jumpPower = 15f;
+    [SerializeField, Tooltip("歩く速さ")] float _speed = 0f;
+    [SerializeField, Tooltip("ジャンプの高さ")] float _jumpPower = 15f;
+    [SerializeField, Tooltip("空中の速さ")] float _airSpeed = 2f;
 
     private float _h = 0f;
     private Rigidbody2D _rb2d;
     private Vector2 _dir = new Vector2(0, 0);
     private Animator _anim;
-    private int _jumpCount = 0;
+    private bool _isAir = false;
 
     void Start()
     {
@@ -46,33 +47,44 @@ public class Player : MonoBehaviour
         }
 
         Vector2 dir = new Vector2(_h, 0);
-        Vector2 b = dir.normalized * _speed;
-        b.y = _rb2d.velocity.y;
-        _rb2d.velocity = b;
-
-        if (Input.GetButtonDown("Jump") && _jumpCount < 1)
+        //Vector2 b = dir.normalized * _speed;
+        if (_isAir)
         {
+            Vector2 b = dir.normalized * _speed / _airSpeed;
+            b.y = _rb2d.velocity.y;
+            _rb2d.velocity = b;
+        }
+        else
+        {
+            Vector2 b = dir.normalized * _speed;
+            b.y = _rb2d.velocity.y;
+            _rb2d.velocity = b;
+        }
+
+        if (Input.GetButtonDown("Jump") && !_isAir)
+        {
+            _isAir = true;
             _rb2d.velocity = Vector2.zero;
             _rb2d.AddForce(transform.up * _jumpPower, ForceMode2D.Impulse);
             _anim.SetBool("Jump", true);
-            _jumpCount++;
+
         }
+
     }
 
     /// <summary>
-    /// 設置判定
+    /// 当たり判定
     /// </summary>
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Platform")
-        {
-            _jumpCount = 0;
-            _anim.SetBool("Jump", false);
-        }
-
-        if(collision.gameObject.tag == "Dead")
+        if (collision.gameObject.tag == "Dead")
         {
             GameManager.Instance.GameOver();
+        }
+        if (collision.gameObject.tag == "Platform")
+        {
+            _isAir = false;
+            _anim.SetBool("Jump", false);
         }
     }
 }
